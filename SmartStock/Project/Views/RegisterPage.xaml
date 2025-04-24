@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartStock.Project.Views.RegisterPage"
+             BackgroundColor="#ffffff">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="TextColor" Value="#333333"/>
+                <Setter Property="Margin" Value="0, 0, 15, 0"/>
+            </Style>
+            <Style TargetType="Border">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="Stroke" Value="Black"/>
+                <Setter Property="StrokeShape" Value="RoundRectangle 4"/>
+                <Setter Property="StrokeThickness" Value="1"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="PlaceholderColor" Value="#333333"/>
+                <Setter Property="TextColor" Value="#333333"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout VerticalOptions="Center">
+        <Label HorizontalOptions="Center" Margin="0, 20" FontSize="25" FontAttributes="Bold">
+            Register
+        </Label>
+        <Grid RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,300,*" RowSpacing="10">
+            <Label Grid.Row="0" Grid.Column="0">Username:</Label>
+            <Border Grid.Row="0" Grid.Column="1">
+                <Entry Placeholder="eg : johndoe@gmail.com"/>
+            </Border>
+
+            <Label Grid.Row="1" Grid.Column="0">Company Name:</Label>
+            <Border Grid.Row="1" Grid.Column="1">
+                <Entry Placeholder="eg : johndoe@gmail.com"/>
+            </Border>
+
+            <Label Grid.Row="2" Grid.Column="0">Email:</Label>
+            <Border Grid.Row="2" Grid.Column="1">
+                <Entry Placeholder="eg : johndoe@gmail.com"/>
+            </Border>
+
+            <Label Grid.Row="3" Grid.Column="0">Password:</Label>
+            <Border Grid.Row="3" Grid.Column="1">
+                <Entry Placeholder="eg: companyusername"/>
+            </Border>
+
+            <Label Grid.Row="4" Grid.Column="0">Confirm Password:</Label>
+            <Border Grid.Row="4" Grid.Column="1">
+                <Entry Placeholder="eg: ********"/>
+            </Border>
+        </Grid>
+        <HorizontalStackLayout HorizontalOptions="Center" Margin="0, 20">
+            <Label Margin="0">Already have a account?</Label>
+            <Label TextDecorations="Underline"
+                   Text="Login"
+                   x:Name="LoginPagebtn">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

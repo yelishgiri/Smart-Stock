@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="SmartStock.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SmartStock"
+    xmlns:Views="clr-namespace:SmartStock.Project.Views">
+
+    <ShellContent
+        ContentTemplate="{DataTemplate Views:LoginPage}"
+        Route="LoginPage" />
+
+</Shell>
