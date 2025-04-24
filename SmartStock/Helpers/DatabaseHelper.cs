@@ -39,7 +39,12 @@ public class DatabaseHelper
                 new Product { Name = "Red Bull", Category = "Beverage", Quantity = 120, Price = 2.99m, Barcode = "100007", Description = "Energy drink", ExpiryDate = DateTime.Now.AddMonths(5) },
                 new Product { Name = "Chips Lays", Category = "Snack", Quantity = 180, Price = 1.50m, Barcode = "100008", Description = "Potato chips", ExpiryDate = DateTime.Now.AddMonths(3) },
                 new Product { Name = "Cigarettes", Category = "Tobacco", Quantity = 90, Price = 7.99m, Barcode = "100009", Description = "Pack of cigarettes", ExpiryDate = DateTime.Now.AddYears(1) },
-                new Product { Name = "Car Freshener", Category = "Auto", Quantity = 60, Price = 2.50m, Barcode = "100010", Description = "Scented freshener", ExpiryDate = DateTime.Now.AddYears(1) }
+                new Product { Name = "Car Freshener", Category = "Auto", Quantity = 60, Price = 2.50m, Barcode = "100010", Description = "Scented freshener", ExpiryDate = DateTime.Now.AddYears(1) },
+                new Product { Name = "Flashlight Battery", Category = "Electronics", Quantity = 3, Price = 4.99m, Barcode = "100011", Description = "Low power battery", ExpiryDate = DateTime.Now.AddMonths(18) },
+                new Product { Name = "Notebook", Category = "Stationery", Quantity = 5, Price = 2.50m, Barcode = "100012", Description = "200-page ruled", ExpiryDate = DateTime.Now.AddYears(2) },
+                new Product { Name = "First Aid Kit", Category = "Health", Quantity = 2, Price = 15.00m, Barcode = "100013", Description = "Emergency use", ExpiryDate = DateTime.Now.AddYears(3) },
+                new Product { Name = "USB Cable", Category = "Electronics", Quantity = 8, Price = 3.99m, Barcode = "100014", Description = "Type-C USB", ExpiryDate = DateTime.Now.AddYears(5) },
+                new Product { Name = "Face Mask Pack", Category = "Health", Quantity = 1, Price = 6.00m, Barcode = "100015", Description = "Reusable masks", ExpiryDate = DateTime.Now.AddMonths(24) },
             };
 
             foreach (var product in mockProducts)
@@ -66,4 +71,13 @@ public class DatabaseHelper
 
     public Task<List<Invoice>> GetInvoicesByUserAsync(int userId) =>
         _db.Table<Invoice>().Where(i => i.UserId == userId).ToListAsync();
+
+    public Task<List<Product>> GetLowStockProductsAsync(int threshold = 10){
+    return _db.Table<Product>()
+              .Where(p => p.Quantity < threshold)
+              .Take(5)
+              .ToListAsync();
 }
+}
+
+

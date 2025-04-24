@@ -2,168 +2,298 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartStock.Project.Views.ProductsPage"
-             BackgroundColor="#ffffff">
+             BackgroundColor="#F5F7FA">
+
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="Label">
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="HorizontalOptions" Value="End"/>
-                <Setter Property="VerticalOptions" Value="Center"/>
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#1E293B"/>
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="0,0,0,8"/>
+            </Style>
+            
+            <Style x:Key="SubtitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#334155"/>
                 <Setter Property="FontSize" Value="18"/>
-                <Setter Property="TextColor" Value="black"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="0,0,0,5"/>
             </Style>
-            <Style TargetType="Border">
-                <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="Stroke" Value="Black" />
-                <Setter Property="StrokeThickness" Value="2"/>
-                <Setter Property="StrokeShape" Value="RoundRectangle 4"/>
+            
+            <Style x:Key="BodyTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#475569"/>
+                <Setter Property="FontSize" Value="14"/>
             </Style>
-            <Style TargetType="Entry">
+            
+            <Style x:Key="CardStyle" TargetType="Border">
+                <Setter Property="Stroke" Value="#E2E8F0"/>
+                <Setter Property="StrokeThickness" Value="1"/>
+                <Setter Property="StrokeShape" Value="RoundRectangle 12"/>
+                <Setter Property="Padding" Value="16"/>
+                <Setter Property="Margin" Value="0,8"/>
                 <Setter Property="BackgroundColor" Value="White"/>
-                <Setter Property="PlaceholderColor" Value="#333333"/>
-                <Setter Property="TextColor" Value="#333333"/>
+                <Setter Property="Shadow">
+                    <Setter.Value>
+                        <Shadow Brush="#10000000" Offset="0,2" Radius="6" Opacity="0.1"/>
+                    </Setter.Value>
+                </Setter>
             </Style>
-            <Style x:Key="PageButton" TargetType="Button">
+            
+            <Style x:Key="PrimaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#3B82F6"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="Padding" Value="16,10"/>
+            </Style>
+            
+            <Style x:Key="SecondaryButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="White"/>
-                <Setter Property="Padding" Value="10"/>
-                <Setter Property="Margin" Value="15, 20, 15, 0"/>
-                <Setter Property="BorderColor" Value="#333333"/>
-                <Setter Property="BorderWidth" Value="2"/>
+                <Setter Property="TextColor" Value="#3B82F6"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="#3B82F6"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="Padding" Value="16,10"/>
+            </Style>
+            
+            <Style x:Key="AlertButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#EF4444"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="Padding" Value="16,10"/>
+            </Style>
+            
+            <Style x:Key="NavButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="#64748B"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Padding" Value="16,12"/>
+                <Setter Property="Margin" Value="8,4"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+            
+            <Style x:Key="ActiveNavButton" TargetType="Button" BasedOn="{StaticResource NavButton}">
+                <Setter Property="BackgroundColor" Value="#EFF6FF"/>
+                <Setter Property="TextColor" Value="#3B82F6"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            
+            <Style x:Key="InputBorderStyle" TargetType="Border">
+                <Setter Property="Stroke" Value="#E2E8F0"/>
+                <Setter Property="StrokeThickness" Value="1"/>
+                <Setter Property="StrokeShape" Value="RoundRectangle 8"/>
+                <Setter Property="Padding" Value="12,0"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+            
+            <Style x:Key="InputStyle" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="PlaceholderColor" Value="#94A3B8"/>
+                <Setter Property="TextColor" Value="#1E293B"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid ColumnDefinitions="15*, 2, 85*" RowDefinitions="*" VerticalOptions="Fill">
-        <VerticalStackLayout Grid.Column="0" VerticalOptions="Fill">
-            <Label 
-                FontSize="30"
-                FontAttributes="Bold"
-                HorizontalOptions="Center"
-                Margin="0,20"
-                >Smart Stock</Label>
-
-            <BoxView
-                Color="black"  
-                Margin="0,0,0,0"
-                HeightRequest="2"
-                HorizontalOptions="Fill"/>
-
-            <Button Text="Dashboard" Style="{StaticResource PageButton}"/>
-            <Button Text="Products" Style="{StaticResource PageButton}" />
-            <Button Text="Documents" Style="{StaticResource PageButton}"/>
-            <Button Text="Log Out" Style="{StaticResource PageButton}"/>
-        </VerticalStackLayout>
-
-        <BoxView
-            Grid.Column="1" Grid.RowSpan="2"
-            Color="Black"  
-            Margin="0,0,0,0"                   
-            WidthRequest="2"  
-            VerticalOptions="Fill"/>
-
-        <VerticalStackLayout Grid.Column="2" VerticalOptions="Fill">
-            <HorizontalStackLayout HorizontalOptions="End" HeightRequest="100" Spacing="20">
-
-                <Button Text="Storage Alerts" VerticalOptions="Center"/>
-
-                <VerticalStackLayout VerticalOptions="Center">
-                    <Label FontSize="30" FontAttributes="Bold">John Doe</Label>
-                    <Label>XYZ Company</Label>
-                </VerticalStackLayout>
-
-                <Image Source="profile.png"/>
-
-            </HorizontalStackLayout>
-
-            <Label FontSize="30"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Start"
-                   Margin="20, 0, 0 ,20"
-                   >Products</Label>
-
-            <FlexLayout  Padding="20, 0" JustifyContent="SpaceBetween">
-
-                <Border Stroke="Black"
-                        StrokeThickness="2"
-                        StrokeShape="RoundRectangle 6"
-                        WidthRequest="450"
-                        >
-                    <Entry Placeholder="Eg: Product Barcode: 77422101"
-                           HorizontalTextAlignment="Center"
-                           />
-                </Border>
-
-                <Border Stroke="Black"
-                        StrokeThickness="2"
-                        StrokeShape="RoundRectangle 6"
-                        WidthRequest="150"
-                        >
-                    <FlexLayout HorizontalOptions="Fill">
-                        <Label HorizontalOptions="Start">
-                            4
-                        </Label>
-
-                        <Stepper Maximum="360"
-                                 Increment="1"
-                                 BackgroundColor="Black"
-                                 
-                                 HorizontalOptions="End"/>
-                    </FlexLayout>
-
-
-                </Border>
-
-                <Border Stroke="Black"
-                        StrokeThickness="2"
-                        StrokeShape="RoundRectangle 6"
-                        WidthRequest="350"
-                        >
-                    <Entry Placeholder="Eg: Category"
-                           HorizontalTextAlignment="Center"
-                           />
-                </Border>
-
-                <Button Text="Add Products" BackgroundColor="White"
-                        Padding="10"
-                        BorderColor="#333333"
-                        BorderWidth="2"/>
-            </FlexLayout>
-
-            <Border Stroke="Black"
-                    StrokeThickness="2"
-                    StrokeShape="RoundRectangle 6"
-                    HorizontalOptions="Fill"
-                    Margin="20, 20, 20, 0"
-                    Padding="3"
-                    >
-                <FlexLayout HorizontalOptions="Fill">
-                    <Image Source="searchicon.png"
-                           HorizontalOptions="Start"
-                           />
-
-                    <Entry Placeholder="Search Products"
-                               HorizontalOptions="Center"/>
-                </FlexLayout>
-
+    <Grid ColumnDefinitions="250, 1*" RowDefinitions="*" VerticalOptions="Fill">
+        <Grid Grid.Column="0" BackgroundColor="White" RowDefinitions="Auto, Auto, 1*, Auto" Padding="16,24">
+            <VerticalStackLayout Grid.Row="0" Spacing="4" Margin="0,0,0,24">
+                <Label Text="Smart Stock" FontSize="24" FontAttributes="Bold" TextColor="#3B82F6" HorizontalOptions="Start"/>
+                <Label Text="Inventory Management" FontSize="12" TextColor="#64748B" HorizontalOptions="Start"/>
+            </VerticalStackLayout>
+            
+            <Border Grid.Row="1" Style="{StaticResource InputBorderStyle}" Margin="0,0,0,16">
+                <Grid ColumnDefinitions="Auto, *">
+                    <Image Grid.Column="0" Source="search_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
+                    <Entry Grid.Column="1" Placeholder="Search..." Style="{StaticResource InputStyle}"/>
+                </Grid>
             </Border>
-
-            <Grid RowDefinitions="70*, 30*"
-                  RowSpacing="20" ColumnSpacing="20"
-                  Padding="20"
-                  MinimumHeightRequest="435"
-                  >
-
-                <Border Grid.Row="0" HorizontalOptions="Fill"  Padding="20">
-                    <Label HorizontalOptions="Start" VerticalOptions="Start"
-                           >Latest Products</Label>
-                </Border>
-
-                <Border Grid.Row="1" HorizontalOptions="Fill" Padding="20">
-                    <Label HorizontalOptions="Start" VerticalOptions="Start">Low Stock Products</Label>
-                </Border>
-
+            
+                <VerticalStackLayout Grid.Row="2" Spacing="4">
+                <Label Text="MENU" FontSize="12" TextColor="#94A3B8" Margin="12,16,0,8"/>
+                
+                <Button Text="Dashboard" Style="{StaticResource NavButton}" x:Name="DashBoardbtn" Clicked="DashBoardtbtn_Clicked">
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe871;" Color="#64748B" Size="18"/>
+                    </Button.ImageSource>
+                </Button>
+                
+                <Button Text="Products" Style="{StaticResource ActiveNavButton}">
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe8f6;" Color="#3B82F6" Size="18"/>
+                    </Button.ImageSource>
+                </Button>
+                
+                <Button Text="Documents" Style="{StaticResource NavButton}">
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe873;" Color="#64748B" Size="18"/>
+                    </Button.ImageSource>
+                </Button>
+            </VerticalStackLayout>
+             
+            <Button Grid.Row="3" Text="Log Out" Style="{StaticResource NavButton}">
+                <Button.ImageSource>
+                    <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe9ba;" Color="#64748B" Size="18"/>
+                </Button.ImageSource>
+            </Button>
+        </Grid>
+        
+        <Grid Grid.Column="1" RowDefinitions="Auto, Auto, Auto, 1*" RowSpacing="24" Padding="24">
+            <Grid Grid.Row="0" ColumnDefinitions="1*, Auto" ColumnSpacing="16">
+                <VerticalStackLayout Grid.Column="0">
+                    <Label Text="Products" Style="{StaticResource TitleStyle}" FontSize="28"/>
+                    <Label Text="Manage your inventory" Style="{StaticResource BodyTextStyle}" TextColor="#64748B"/>
+                </VerticalStackLayout>
+                
+                <HorizontalStackLayout Grid.Column="1" Spacing="16" VerticalOptions="Center">
+                    <Button Text="Storage Alerts" Style="{StaticResource AlertButton}">
+                        <Button.ImageSource>
+                            <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe002;" Color="White" Size="16"/>
+                        </Button.ImageSource>
+                    </Button>
+                    
+                    <Grid ColumnDefinitions="Auto, Auto" ColumnSpacing="12">
+                        <Border Grid.Column="0" StrokeShape="RoundRectangle 20" WidthRequest="40" HeightRequest="40" BackgroundColor="#EFF6FF" Padding="0">
+                            <Label Text="J" TextColor="#3B82F6" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                        
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                <Label x:Name="UsernameLabel" Text="Admin User" FontSize="16" FontAttributes="Bold" TextColor="#1E293B"/>
+                                <Label x:Name="CompanyLabel" Text="Smart Company" FontSize="12" TextColor="#64748B"/>
+                            </VerticalStackLayout>
+                    </Grid>
+                </HorizontalStackLayout>
             </Grid>
-
-        </VerticalStackLayout>
+            
+            <Border Grid.Row="1" Style="{StaticResource CardStyle}">
+                <Grid RowDefinitions="Auto, Auto" RowSpacing="16">
+                    <Label Grid.Row="0" Text="Add New Product" Style="{StaticResource SubtitleStyle}"/>
+                    
+                    <Grid Grid.Row="1" ColumnDefinitions="3*, 1*, 2*, 1*" ColumnSpacing="16">
+                        <Border Grid.Column="0" Style="{StaticResource InputBorderStyle}">
+                            <Grid ColumnDefinitions="Auto, *">
+                                <Image Grid.Column="0" Source="barcode_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
+                                <Entry Grid.Column="1" Placeholder="Product Barcode (e.g., 77422101)" Style="{StaticResource InputStyle}"/>
+                            </Grid>
+                        </Border>
+                        
+                        <Border Grid.Column="1" Style="{StaticResource InputBorderStyle}">
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Entry Grid.Column="0" Text="4" Style="{StaticResource InputStyle}" HorizontalTextAlignment="Center"/>
+                                <HorizontalStackLayout Grid.Column="1" Spacing="0">
+                                    <Button Text="−" FontSize="18" BackgroundColor="Transparent" TextColor="#64748B" Padding="8,0" CornerRadius="0" BorderWidth="0"/>
+                                    <Button Text="+" FontSize="18" BackgroundColor="Transparent" TextColor="#64748B" Padding="8,0" CornerRadius="0" BorderWidth="0"/>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Border>
+                        
+                        <Border Grid.Column="2" Style="{StaticResource InputBorderStyle}">
+                            <Grid ColumnDefinitions="Auto, *">
+                                <Image Grid.Column="0" Source="category_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
+                                <Entry Grid.Column="1" Placeholder="Category" Style="{StaticResource InputStyle}"/>
+                            </Grid>
+                        </Border>
+                        
+                        <Button Grid.Column="3" Text="Add Product" Style="{StaticResource PrimaryButton}">
+                            <Button.ImageSource>
+                                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe145;" Color="White" Size="16"/>
+                            </Button.ImageSource>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Border>
+            
+            <Border Grid.Row="2" Style="{StaticResource InputBorderStyle}">
+                <Grid ColumnDefinitions="Auto, *, Auto">
+                    <Image Grid.Column="0" Source="search_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
+                    <Entry Grid.Column="1" Placeholder="Search products by name, category, or barcode" Style="{StaticResource InputStyle}"/>
+                    <Button Grid.Column="2" Text="Filter" Style="{StaticResource SecondaryButton}" Padding="12,8">
+                        <Button.ImageSource>
+                            <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe152;" Color="#3B82F6" Size="16"/>
+                        </Button.ImageSource>
+                    </Button>
+                </Grid>
+            </Border>
+            
+            <Grid Grid.Row="3" RowDefinitions="1*, Auto" ColumnDefinitions="1*, 1*" RowSpacing="16" ColumnSpacing="16">
+                <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource CardStyle}">
+                    <Grid RowDefinitions="Auto, 1*" RowSpacing="16">
+                        <Grid Grid.Row="0" ColumnDefinitions="1*, Auto">
+                            <Label Grid.Column="0" Text="Latest Products" Style="{StaticResource SubtitleStyle}"/>
+                            <Button Grid.Column="1" Text="View All" BackgroundColor="Transparent" TextColor="#3B82F6" FontAttributes="Bold" Padding="0"/>
+                        </Grid>
+                        
+                        <CollectionView Grid.Row="1" EmptyView="No products available" x:Name="LatestProductListView">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="8"/>
+                            </CollectionView.ItemsLayout>
+                            
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border StrokeShape="RoundRectangle 8" Stroke="#E2E8F0" StrokeThickness="1" Padding="12" BackgroundColor="White">
+                                        <Grid ColumnDefinitions="Auto, 1*, Auto" ColumnSpacing="12">
+                                            <Border Grid.Column="0" StrokeShape="RoundRectangle 8" BackgroundColor="#F1F5F9" WidthRequest="40" HeightRequest="40" Padding="0">
+                                                <Label Text="{Binding Name[0]}" TextColor="#3B82F6" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            </Border>
+                                            
+                                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                                <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="#1E293B" FontSize="14"/>
+                                                <Label Text="{Binding Category}" TextColor="#64748B" FontSize="12"/>
+                                            </VerticalStackLayout>
+                                            
+                                            <VerticalStackLayout Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center">
+                                                <Label Text="{Binding Quantity, StringFormat='Qty: {0}'}" TextColor="#64748B" FontSize="12" HorizontalOptions="End"/>
+                                                <Label Text="{Binding Price, StringFormat='${0}'}" TextColor="#0F172A" FontSize="14" FontAttributes="Bold" HorizontalOptions="End"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Border>
+                
+                <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource CardStyle}">
+                    <Grid RowDefinitions="Auto, 1*" RowSpacing="16">
+                        <Grid Grid.Row="0" ColumnDefinitions="1*, Auto">
+                            <Label Grid.Column="0" Text="Low Stock Products" Style="{StaticResource SubtitleStyle}"/>
+                            <Button Grid.Column="1" Text="Restock All" Style="{StaticResource SecondaryButton}" Padding="12,6"/>
+                        </Grid>
+                        
+                        <CollectionView Grid.Row="1" EmptyView="No low stock products" x:Name="LowStockProductView">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="8"/>
+                            </CollectionView.ItemsLayout>
+                            
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border StrokeShape="RoundRectangle 8" Stroke="#E2E8F0" StrokeThickness="1" Padding="12" BackgroundColor="White">
+                                        <Grid ColumnDefinitions="Auto, 1*, Auto" ColumnSpacing="12">
+                                            <Border Grid.Column="0" StrokeShape="RoundRectangle 8" BackgroundColor="#FEF2F2" WidthRequest="40" HeightRequest="40" Padding="0">
+                                                <Label Text="{Binding Name[0]}" TextColor="#EF4444" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            </Border>
+                                            
+                                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                                <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="#1E293B" FontSize="14"/>
+                                                <Label Text="{Binding Category}" TextColor="#64748B" FontSize="12"/>
+                                            </VerticalStackLayout>
+                                            
+                                            <HorizontalStackLayout Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" Spacing="8">
+                                                <Label Text="{Binding Quantity, StringFormat='Qty: {0}'}" TextColor="#EF4444" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
+                                                <Button Text="Restock" BackgroundColor="#FEF2F2" TextColor="#EF4444" FontAttributes="Bold" CornerRadius="6" Padding="8,4" FontSize="12"/>
+                                            </HorizontalStackLayout>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
     </Grid>
 </ContentPage>

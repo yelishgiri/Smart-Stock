@@ -15,14 +15,9 @@ public partial class DashBoardPage : ContentPage
             UsernameLabel.Text = App.CurrentUser.Username;
             CompanyLabel.Text = App.CurrentUser.CompanyName;
         }
- 
-
+        
         var products = await App.DbHelper.GetProductsAsync();
-               foreach (var product in products)
-{
-    Console.WriteLine($"[DEBUG] Product: {product.Id} - {product.Name}");
-}
-
+ 
         int totalProducts = products.Count;
         int totalQuantity = products.Sum(p => p.Quantity);
         decimal totalValue = products.Sum(p => p.Price * p.Quantity);

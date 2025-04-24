@@ -2,155 +2,272 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartStock.Project.Views.DashBoardPage"
-             BackgroundColor="#f9f9f9">
+             BackgroundColor="#F5F7FA">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="Label">
-                <Setter Property="TextColor" Value="#222"/>
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#1E293B"/>
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="0,0,0,8"/>
+            </Style>
+            
+            <Style x:Key="SubtitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#334155"/>
                 <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="0,0,0,5"/>
             </Style>
-            <Style TargetType="Border">
-                <Setter Property="Stroke" Value="#ccc" />
-                <Setter Property="StrokeThickness" Value="1.5"/>
-                <Setter Property="StrokeShape" Value="RoundRectangle 8"/>
-                <Setter Property="Padding" Value="10"/>
-                <Setter Property="Margin" Value="10,5"/>
+            
+            <Style x:Key="BodyTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#475569"/>
+                <Setter Property="FontSize" Value="14"/>
             </Style>
-            <Style TargetType="Entry">
+            
+            <Style x:Key="StatLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#64748B"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Margin" Value="0,5,0,0"/>
+            </Style>
+            
+            <Style x:Key="StatValueStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#0F172A"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="0,0,0,10"/>
+            </Style>
+            
+            <Style x:Key="CardStyle" TargetType="Border">
+                <Setter Property="Stroke" Value="#E2E8F0"/>
+                <Setter Property="StrokeThickness" Value="1"/>
+                <Setter Property="StrokeShape" Value="RoundRectangle 12"/>
+                <Setter Property="Padding" Value="16"/>
+                <Setter Property="Margin" Value="0,8"/>
                 <Setter Property="BackgroundColor" Value="White"/>
-                <Setter Property="PlaceholderColor" Value="#999"/>
-                <Setter Property="TextColor" Value="#333"/>
+                <Setter Property="Shadow">
+                    <Setter.Value>
+                        <Shadow Brush="#10000000" Offset="0,2" Radius="6" Opacity="0.1"/>
+                    </Setter.Value>
+                </Setter>
             </Style>
-            <Style x:Key="PageButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#ffffff"/>
-                <Setter Property="Padding" Value="12"/>
-                <Setter Property="Margin" Value="10, 10, 10, 0"/>
-                <Setter Property="BorderColor" Value="#007AFF"/>
-                <Setter Property="TextColor" Value="#007AFF"/>
-                <Setter Property="BorderWidth" Value="1.5"/>
-                <Setter Property="CornerRadius" Value="6"/>
+            
+            <Style x:Key="PrimaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#3B82F6"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="Padding" Value="16,10"/>
+            </Style>
+            
+            <Style x:Key="AlertButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#EF4444"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="Padding" Value="16,10"/>
+            </Style>
+            
+            <Style x:Key="NavButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="#64748B"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Padding" Value="16,12"/>
+                <Setter Property="Margin" Value="8,4"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+            
+            <Style x:Key="ActiveNavButton" TargetType="Button" BasedOn="{StaticResource NavButton}">
+                <Setter Property="BackgroundColor" Value="#EFF6FF"/>
+                <Setter Property="TextColor" Value="#3B82F6"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            
+            <Style x:Key="SearchEntryStyle" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="PlaceholderColor" Value="#94A3B8"/>
+                <Setter Property="TextColor" Value="#1E293B"/>
+                <Setter Property="FontSize" Value="14"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid ColumnDefinitions="15*, 2, 85*" RowDefinitions="*" VerticalOptions="Fill">
-
-        <VerticalStackLayout Grid.Column="0" BackgroundColor="#ffffff" Padding="0,40">
-            <Label FontSize="28" FontAttributes="Bold" HorizontalOptions="Center">Smart Stock</Label>
-            <BoxView Color="#007AFF" HeightRequest="3" HorizontalOptions="Fill" Margin="0,10" />
-            <Button Text="Dashboard" Style="{StaticResource PageButton}" x:Name="DashBoardbtn" />
-            <Button Text="Products" Style="{StaticResource PageButton}" x:Name="Productstbtn" Clicked="Productstbtn_Clicked" />
-            <Button Text="Documents" Style="{StaticResource PageButton}" />
-            <Button Text="Log Out" Style="{StaticResource PageButton}" x:Name="LogOutbtn" Clicked="LogOutbtn_Clicked" />
-        </VerticalStackLayout>
-
-        <BoxView Grid.Column="1" Color="#007AFF" WidthRequest="2" VerticalOptions="Fill" />
-
-        <ScrollView Grid.Column="2">
-            <VerticalStackLayout Padding="20" Spacing="20">
-                <HorizontalStackLayout HorizontalOptions="End" Spacing="15">
-                    <Button Text="Storage Alerts" BackgroundColor="#FF3B30" TextColor="White" />
-                    <VerticalStackLayout>
-                        <Label x:Name="UsernameLabel" FontSize="24" FontAttributes="Bold" />
-                        <Label x:Name="CompanyLabel" FontSize="16" TextColor="#555" />
-                        <Label Text="Admin" FontSize="14" TextColor="#888" FontAttributes="Italic" />
-                    </VerticalStackLayout>
-                    <!-- TODO: Replace with user profile image -->
-                </HorizontalStackLayout>
-
-                <FlexLayout JustifyContent="SpaceBetween" Padding="0">
-                    <Label Text="Dashboard" FontSize="28" FontAttributes="Bold" />
-                    <Border>
-                        <Entry Placeholder="Search Products..." WidthRequest="300" HorizontalTextAlignment="Start" />
-                    </Border>
-                </FlexLayout>
-
-                <Grid ColumnDefinitions="40*, 60*" RowDefinitions="60*, 40*" ColumnSpacing="20" RowSpacing="20">
-                    <Border Grid.Column="0" Grid.Row="0">
-                        <VerticalStackLayout>
-                            <Label Text="Analytics" FontSize="20" FontAttributes="Bold" />
-                            <Label Text="Total Products:" />
-                            <Label x:Name="TotalProductsLabel" FontSize="16" Margin="5,0" />
-                            <Label Text="Total Quantity:" />
-                            <Label x:Name="TotalQuantityLabel" FontSize="16" Margin="5,0" />
-                            <Label Text="Total Value:" />
-                            <Label x:Name="TotalValueLabel" FontSize="16" Margin="5,0" />
-                        </VerticalStackLayout>
-                    </Border>
-
-                    <Border Grid.Column="1" Grid.Row="0">
-                        <VerticalStackLayout>
-                            <Label Text="Stock Info" FontSize="20" FontAttributes="Bold" />
-                            <CollectionView x:Name="ProductListView">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Frame BorderColor="#ccc" CornerRadius="8" Padding="10" Margin="0,5">
-                                            <VerticalStackLayout>
-                                                <Label Text="{Binding Name}" FontAttributes="Bold" />
-                                                <Label Text="Category: {Binding Category}" />
-                                                <Label Text="Qty: {Binding Quantity} | Price: ${Binding Price}" />
-                                            </VerticalStackLayout>
-                                        </Frame>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
-                        </VerticalStackLayout>
-                    </Border>
-
-                    <Border Grid.Row="1" Grid.ColumnSpan="2">
-            <VerticalStackLayout>
-    <Label Text="Newly Added" FontSize="20" FontAttributes="Bold" />
-<CollectionView x:Name="NewlyAddedList">
-  <CollectionView.ItemTemplate>
-    <DataTemplate>
-      <Frame BorderColor="#ddd" Padding="10" Margin="5" CornerRadius="10">
-        <HorizontalStackLayout Spacing="10">
-          <!-- TODO: Add product image here -->
-          <Frame WidthRequest="60" HeightRequest="60" CornerRadius="8" BackgroundColor="#eee" VerticalOptions="Center" HorizontalOptions="Start">
-            <Label Text="IMG" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#999" />
-          </Frame>
-          <VerticalStackLayout>
-            <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" />
-
-            <Label>
-              <Label.FormattedText>
-                <FormattedString>
-                  <Span Text="Category: " />
-                  <Span Text="{Binding Category}" />
-                </FormattedString>
-              </Label.FormattedText>
-            </Label>
-
-            <Label>
-              <Label.FormattedText>
-                <FormattedString>
-                  <Span Text="Added Qty: " />
-                  <Span Text="{Binding Quantity}" />
-                </FormattedString>
-              </Label.FormattedText>
-            </Label>
-
-            <Label>
-              <Label.FormattedText>
-                <FormattedString>
-                  <Span Text="Barcode: " />
-                  <Span Text="{Binding Barcode}" />
-                </FormattedString>
-              </Label.FormattedText>
-            </Label>
-
-          </VerticalStackLayout>
-        </HorizontalStackLayout>
-      </Frame>
-    </DataTemplate>
-  </CollectionView.ItemTemplate>
-</CollectionView>
-
-  </VerticalStackLayout>
-</Border>
-                </Grid>
+    <Grid ColumnDefinitions="250, 1*" RowDefinitions="*" VerticalOptions="Fill">
+      <Grid Grid.Column="0" BackgroundColor="White" RowDefinitions="Auto, Auto, 1*, Auto" Padding="16,24">
+            <VerticalStackLayout Grid.Row="0" Spacing="4" Margin="0,0,0,24">
+                <Label Text="Smart Stock" FontSize="24" FontAttributes="Bold" TextColor="#3B82F6" HorizontalOptions="Start"/>
+                <Label Text="Inventory Management" FontSize="12" TextColor="#64748B" HorizontalOptions="Start"/>
             </VerticalStackLayout>
+            
+            <Border Grid.Row="1" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="12,0" Margin="0,0,0,16">
+                <Grid ColumnDefinitions="Auto, *">
+                    <Image Grid.Column="0" Source="search_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
+                    <Entry Grid.Column="1" Placeholder="Search..." Style="{StaticResource SearchEntryStyle}" VerticalOptions="Center"/>
+                </Grid>
+            </Border>
+            
+            <VerticalStackLayout Grid.Row="2" Spacing="4">
+                <Label Text="MENU" FontSize="12" TextColor="#94A3B8" Margin="12,16,0,8"/>
+                
+                <Button Text="Dashboard" Style="{StaticResource ActiveNavButton}" x:Name="DashBoardbtn">
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe871;" Color="#3B82F6" Size="18"/>
+                    </Button.ImageSource>
+                </Button>
+                
+                <Button Text="Products" Style="{StaticResource NavButton}" x:Name="Productstbtn" Clicked="Productstbtn_Clicked">
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe8f6;" Color="#64748B" Size="18"/>
+                    </Button.ImageSource>
+                </Button>
+                
+                <Button Text="Documents" Style="{StaticResource NavButton}">
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe873;" Color="#64748B" Size="18"/>
+                    </Button.ImageSource>
+                </Button>
+            </VerticalStackLayout>
+            
+            <Button Grid.Row="3" Text="Log Out" Style="{StaticResource NavButton}" x:Name="LogOutbtn" Clicked="LogOutbtn_Clicked">
+                <Button.ImageSource>
+                    <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe9ba;" Color="#64748B" Size="18"/>
+                </Button.ImageSource>
+            </Button>
+        </Grid>
+        <ScrollView Grid.Column="1">
+            <Grid Padding="24" RowDefinitions="Auto, Auto, Auto, 1*" RowSpacing="24">
+                <Grid Grid.Row="0" ColumnDefinitions="1*, Auto" ColumnSpacing="16">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Dashboard" Style="{StaticResource TitleStyle}" FontSize="28"/>
+                        <Label Text="Welcome back!" Style="{StaticResource BodyTextStyle}" TextColor="#64748B"/>
+                    </VerticalStackLayout>
+                    
+                    <HorizontalStackLayout Grid.Column="1" Spacing="16" VerticalOptions="Center">
+                        <Button Text="Storage Alerts" Style="{StaticResource AlertButton}">
+                            <Button.ImageSource>
+                                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe002;" Color="White" Size="16"/>
+                            </Button.ImageSource>
+                        </Button>
+                        
+                        <Grid ColumnDefinitions="Auto, Auto" ColumnSpacing="12">
+                            <Border Grid.Column="0" StrokeShape="RoundRectangle 20" WidthRequest="40" HeightRequest="40" BackgroundColor="#EFF6FF" Padding="0">
+                                <Label Text="A" TextColor="#3B82F6" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                <Label x:Name="UsernameLabel" Text="Admin User" FontSize="16" FontAttributes="Bold" TextColor="#1E293B"/>
+                                <Label x:Name="CompanyLabel" Text="Smart Company" FontSize="12" TextColor="#64748B"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </HorizontalStackLayout>
+                </Grid>
+                
+                <Grid Grid.Row="1" ColumnDefinitions="1*, 1*, 1*" ColumnSpacing="16">
+                    <Border Grid.Column="0" Style="{StaticResource CardStyle}">
+                        <Grid RowDefinitions="Auto, 1*" RowSpacing="8">
+                            <Label Grid.Row="0" Text="Total Products" Style="{StaticResource SubtitleStyle}" FontSize="16"/>
+                            <VerticalStackLayout Grid.Row="1">
+                                <Label x:Name="TotalProductsLabel" Text="1,254" FontSize="32" FontAttributes="Bold" TextColor="#3B82F6"/>
+                                <Label Text="↑ 12% from last month" FontSize="12" TextColor="#10B981"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Grid.Column="1" Style="{StaticResource CardStyle}">
+                        <Grid RowDefinitions="Auto, 1*" RowSpacing="8">
+                            <Label Grid.Row="0" Text="Total Quantity" Style="{StaticResource SubtitleStyle}" FontSize="16"/>
+                            <VerticalStackLayout Grid.Row="1">
+                                <Label x:Name="TotalQuantityLabel" Text="8,549" FontSize="32" FontAttributes="Bold" TextColor="#8B5CF6"/>
+                                <Label Text="↑ 8% from last month" FontSize="12" TextColor="#10B981"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Grid.Column="2" Style="{StaticResource CardStyle}">
+                        <Grid RowDefinitions="Auto, 1*" RowSpacing="8">
+                            <Label Grid.Row="0" Text="Total Value" Style="{StaticResource SubtitleStyle}" FontSize="16"/>
+                            <VerticalStackLayout Grid.Row="1">
+                                <Label x:Name="TotalValueLabel" Text="$125,490" FontSize="32" FontAttributes="Bold" TextColor="#EC4899"/>
+                                <Label Text="↑ 15% from last month" FontSize="12" TextColor="#10B981"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </Grid>
+                
+                <Border Grid.Row="2" Style="{StaticResource CardStyle}">
+                    <Grid RowDefinitions="Auto, 1*" RowSpacing="16">
+                        <Grid Grid.Row="0" ColumnDefinitions="1*, Auto">
+                            <Label Grid.Column="0" Text="Stock Information" Style="{StaticResource SubtitleStyle}"/>
+                            <Button Grid.Column="1" Text="View All" BackgroundColor="Transparent" TextColor="#3B82F6" FontAttributes="Bold" Padding="0"/>
+                        </Grid>
+                        
+                        <CollectionView Grid.Row="1" x:Name="ProductListView" EmptyView="No products available">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="8"/>
+                            </CollectionView.ItemsLayout>
+                            
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border StrokeShape="RoundRectangle 8" Stroke="#E2E8F0" StrokeThickness="1" Padding="16" BackgroundColor="White">
+                                        <Grid ColumnDefinitions="Auto, 1*, Auto" ColumnSpacing="16">
+                                            <Border Grid.Column="0" StrokeShape="RoundRectangle 8" BackgroundColor="#F1F5F9" WidthRequest="48" HeightRequest="48" Padding="0">
+                                                <Label Text="{Binding Name[0]}" TextColor="#3B82F6" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            </Border>
+                                            
+                                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                                <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="#1E293B" FontSize="16"/>
+                                                <Label Text="{Binding Category}" TextColor="#64748B" FontSize="14"/>
+                                            </VerticalStackLayout>
+                                            
+                                            <VerticalStackLayout Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center">
+                                                <Label Text="{Binding Quantity, StringFormat='Qty: {0}'}" TextColor="#64748B" FontSize="14" HorizontalOptions="End"/>
+                                                <Label Text="{Binding Price, StringFormat='${0}'}" TextColor="#0F172A" FontSize="16" FontAttributes="Bold" HorizontalOptions="End"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Border>
+                
+                <Border Grid.Row="3" Style="{StaticResource CardStyle}">
+                    <Grid RowDefinitions="Auto, 1*" RowSpacing="16">
+                        <Grid Grid.Row="0" ColumnDefinitions="1*, Auto">
+                            <Label Grid.Column="0" Text="Newly Added Products" Style="{StaticResource SubtitleStyle}"/>
+                            <Button Grid.Column="1" Text="Add New" Style="{StaticResource PrimaryButton}" Padding="12,8"/>
+                        </Grid>
+                        
+                        <CollectionView Grid.Row="1" x:Name="NewlyAddedList" EmptyView="No new products added">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="12"/>
+                            </CollectionView.ItemsLayout>
+                            
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border StrokeShape="RoundRectangle 12" Stroke="#E2E8F0" StrokeThickness="1" Padding="16" BackgroundColor="White">
+                                        <Grid ColumnDefinitions="Auto, 1*, Auto" ColumnSpacing="16">
+                                            <Border Grid.Column="0" StrokeShape="RoundRectangle 10" BackgroundColor="#EFF6FF" WidthRequest="64" HeightRequest="64" Padding="0">
+                                                <Label Text="{Binding Name[0]}" TextColor="#3B82F6" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            </Border>
+                                            
+                                            <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                                <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="#1E293B" FontSize="16"/>
+                                                <Label Text="{Binding Category, StringFormat='Category: {0}'}" TextColor="#64748B" FontSize="14"/>
+                                                <Label Text="{Binding Quantity, StringFormat='Added Qty: {0}'}" TextColor="#64748B" FontSize="14"/>
+                                                <Label Text="{Binding Barcode, StringFormat='Barcode: {0}'}" TextColor="#64748B" FontSize="14"/>
+                                            </VerticalStackLayout>
+                                            
+                                            <Button Grid.Column="2" Text="Details" BackgroundColor="#F1F5F9" TextColor="#3B82F6" FontAttributes="Bold" CornerRadius="8" Padding="12,8" VerticalOptions="Center"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Border>
+            </Grid>
         </ScrollView>
     </Grid>
 </ContentPage>
