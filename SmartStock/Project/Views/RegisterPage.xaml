@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartStock.Project.Views.RegisterPage"
@@ -35,31 +34,42 @@
         <Grid RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,300,*" RowSpacing="10">
             <Label Grid.Row="0" Grid.Column="0">Username:</Label>
             <Border Grid.Row="0" Grid.Column="1">
-                <Entry Placeholder="eg : johndoe@gmail.com"/>
+                <Entry Placeholder="eg : rabin123" x:Name="UsernameEntry" />
             </Border>
 
             <Label Grid.Row="1" Grid.Column="0">Company Name:</Label>
             <Border Grid.Row="1" Grid.Column="1">
-                <Entry Placeholder="eg : johndoe@gmail.com"/>
+            <Entry Placeholder="eg : Your Company" x:Name="CompanyNameEntry" />
             </Border>
 
             <Label Grid.Row="2" Grid.Column="0">Email:</Label>
             <Border Grid.Row="2" Grid.Column="1">
-                <Entry Placeholder="eg : johndoe@gmail.com"/>
+            <Entry Placeholder="eg : example@email.com" x:Name="EmailEntry" />
             </Border>
 
             <Label Grid.Row="3" Grid.Column="0">Password:</Label>
             <Border Grid.Row="3" Grid.Column="1">
-                <Entry Placeholder="eg: companyusername"/>
+                <Entry Placeholder="eg: *******" IsPassword="True" x:Name="PasswordEntry" />
             </Border>
 
             <Label Grid.Row="4" Grid.Column="0">Confirm Password:</Label>
             <Border Grid.Row="4" Grid.Column="1">
-                <Entry Placeholder="eg: ********"/>
+                <Entry Placeholder="eg: ********" IsPassword="True" x:Name="ConfirmPasswordEntry" />
             </Border>
         </Grid>
+
+        <Button Text="Register"
+                BackgroundColor="#007AFF"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="8"
+                WidthRequest="300"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                Clicked="RegisterButton_Clicked"/>
+
         <HorizontalStackLayout HorizontalOptions="Center" Margin="0, 20">
-            <Label Margin="0">Already have a account?</Label>
+            <Label Margin="0">Already have an account?</Label>
             <Label TextDecorations="Underline"
                    Text="Login"
                    x:Name="LoginPagebtn">
@@ -70,3 +80,4 @@
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
+

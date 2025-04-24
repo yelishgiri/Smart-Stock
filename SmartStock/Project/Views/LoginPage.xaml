@@ -36,12 +36,12 @@
         <Grid RowDefinitions="*,*" ColumnDefinitions="*,300,*" RowSpacing="10">
             <Label Grid.Row="0" Grid.Column="0">Username:</Label>
             <Border Grid.Row="0" Grid.Column="1">
-                <Entry Placeholder="eg : companyusername"/>
+            <Entry x:Name="UsernameEntry" Placeholder="eg : companyusername" />
             </Border>
 
             <Label Grid.Row="1" Grid.Column="0">Password:</Label>
             <Border Grid.Row="1" Grid.Column="1">
-                <Entry Placeholder="eg : *********"/>
+                <Entry x:Name="PasswordEntry" Placeholder="eg : *********" IsPassword="True" />
             </Border>
 
 
