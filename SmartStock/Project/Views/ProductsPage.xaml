@@ -105,15 +105,8 @@
                 <Label Text="Smart Stock" FontSize="24" FontAttributes="Bold" TextColor="#3B82F6" HorizontalOptions="Start"/>
                 <Label Text="Inventory Management" FontSize="12" TextColor="#64748B" HorizontalOptions="Start"/>
             </VerticalStackLayout>
-            
-            <Border Grid.Row="1" Style="{StaticResource InputBorderStyle}" Margin="0,0,0,16">
-                <Grid ColumnDefinitions="Auto, *">
-                    <Image Grid.Column="0" Source="search_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
-                    <Entry Grid.Column="1" Placeholder="Search..." Style="{StaticResource InputStyle}"/>
-                </Grid>
-            </Border>
-            
-                <VerticalStackLayout Grid.Row="2" Spacing="4">
+                
+            <VerticalStackLayout Grid.Row="2" Spacing="4">
                 <Label Text="MENU" FontSize="12" TextColor="#94A3B8" Margin="12,16,0,8"/>
                 
                 <Button Text="Dashboard" Style="{StaticResource NavButton}" x:Name="DashBoardbtn" Clicked="DashBoardtbtn_Clicked">
@@ -127,15 +120,9 @@
                         <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe8f6;" Color="#3B82F6" Size="18"/>
                     </Button.ImageSource>
                 </Button>
-                
-                <Button Text="Documents" Style="{StaticResource NavButton}">
-                    <Button.ImageSource>
-                        <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe873;" Color="#64748B" Size="18"/>
-                    </Button.ImageSource>
-                </Button>
             </VerticalStackLayout>
              
-            <Button Grid.Row="3" Text="Log Out" Style="{StaticResource NavButton}">
+            <Button Grid.Row="3" Text="Log Out" Clicked="LogOutbtn_Clicked" Style="{StaticResource NavButton}">
                 <Button.ImageSource>
                     <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe9ba;" Color="#64748B" Size="18"/>
                 </Button.ImageSource>
@@ -149,13 +136,7 @@
                     <Label Text="Manage your inventory" Style="{StaticResource BodyTextStyle}" TextColor="#64748B"/>
                 </VerticalStackLayout>
                 
-                <HorizontalStackLayout Grid.Column="1" Spacing="16" VerticalOptions="Center">
-                    <Button Text="Storage Alerts" Style="{StaticResource AlertButton}">
-                        <Button.ImageSource>
-                            <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe002;" Color="White" Size="16"/>
-                        </Button.ImageSource>
-                    </Button>
-                    
+                <HorizontalStackLayout Grid.Column="1" Spacing="16" VerticalOptions="Center">                    
                     <Grid ColumnDefinitions="Auto, Auto" ColumnSpacing="12">
                         <Border Grid.Column="0" StrokeShape="RoundRectangle 20" WidthRequest="40" HeightRequest="40" BackgroundColor="#EFF6FF" Padding="0">
                             <Label Text="J" TextColor="#3B82F6" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -169,53 +150,80 @@
                 </HorizontalStackLayout>
             </Grid>
             
-            <Border Grid.Row="1" Style="{StaticResource CardStyle}">
-                <Grid RowDefinitions="Auto, Auto" RowSpacing="16">
-                    <Label Grid.Row="0" Text="Add New Product" Style="{StaticResource SubtitleStyle}"/>
-                    
-                    <Grid Grid.Row="1" ColumnDefinitions="3*, 1*, 2*, 1*" ColumnSpacing="16">
-                        <Border Grid.Column="0" Style="{StaticResource InputBorderStyle}">
-                            <Grid ColumnDefinitions="Auto, *">
-                                <Image Grid.Column="0" Source="barcode_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
-                                <Entry Grid.Column="1" Placeholder="Product Barcode (e.g., 77422101)" Style="{StaticResource InputStyle}"/>
-                            </Grid>
-                        </Border>
-                        
-                        <Border Grid.Column="1" Style="{StaticResource InputBorderStyle}">
-                            <Grid ColumnDefinitions="*, Auto">
-                                <Entry Grid.Column="0" Text="4" Style="{StaticResource InputStyle}" HorizontalTextAlignment="Center"/>
-                                <HorizontalStackLayout Grid.Column="1" Spacing="0">
-                                    <Button Text="−" FontSize="18" BackgroundColor="Transparent" TextColor="#64748B" Padding="8,0" CornerRadius="0" BorderWidth="0"/>
-                                    <Button Text="+" FontSize="18" BackgroundColor="Transparent" TextColor="#64748B" Padding="8,0" CornerRadius="0" BorderWidth="0"/>
-                                </HorizontalStackLayout>
-                            </Grid>
-                        </Border>
-                        
-                        <Border Grid.Column="2" Style="{StaticResource InputBorderStyle}">
-                            <Grid ColumnDefinitions="Auto, *">
-                                <Image Grid.Column="0" Source="category_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
-                                <Entry Grid.Column="1" Placeholder="Category" Style="{StaticResource InputStyle}"/>
-                            </Grid>
-                        </Border>
-                        
-                        <Button Grid.Column="3" Text="Add Product" Style="{StaticResource PrimaryButton}">
-                            <Button.ImageSource>
-                                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe145;" Color="White" Size="16"/>
-                            </Button.ImageSource>
-                        </Button>
-                    </Grid>
+          <Border Style="{StaticResource CardStyle}">
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto" RowSpacing="16">
+        <Label Grid.Row="0" Text="Add New Product" Style="{StaticResource SubtitleStyle}"/>
+        
+        <Grid Grid.Row="1" ColumnDefinitions="3*, 3*" ColumnSpacing="16">
+            <Border Grid.Column="0" Style="{StaticResource InputBorderStyle}">
+                <Grid ColumnDefinitions="Auto, *">
+                    <Image Grid.Column="0" Source="product_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
+                    <Entry x:Name="ProductNameEntry" Grid.Column="1" Placeholder="Product Name" Style="{StaticResource InputStyle}"/>
                 </Grid>
             </Border>
+            
+            <Border Grid.Column="1" Style="{StaticResource InputBorderStyle}">
+                <Grid ColumnDefinitions="Auto, *">
+                    <Image Grid.Column="0" Source="barcode_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
+                    <Entry x:Name="BarcodeEntry" Grid.Column="1" Placeholder="Product Barcode (e.g., 77422101)" Style="{StaticResource InputStyle}"/>
+                </Grid>
+            </Border>
+        </Grid>
+        
+        <Grid Grid.Row="2" ColumnDefinitions="2*, 1*, 2*" ColumnSpacing="16" Margin="0,0,0,0">
+            <Border Grid.Column="0" Style="{StaticResource InputBorderStyle}">
+                <Grid ColumnDefinitions="Auto, *">
+                    <Image Grid.Column="0" Source="category_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
+                    <Entry x:Name="CategoryEntry" Grid.Column="1" Placeholder="Category" Style="{StaticResource InputStyle}"/>
+                </Grid>
+            </Border>
+            
+            <Border Grid.Column="1" Style="{StaticResource InputBorderStyle}">
+                <Grid ColumnDefinitions="*, Auto">
+                    <Entry x:Name="QuantityEntry" Grid.Column="0" Text="4" Style="{StaticResource InputStyle}" HorizontalTextAlignment="Center"/>
+                    <HorizontalStackLayout Grid.Column="1" Spacing="0">
+                        <Button x:Name="DecreaseQuantityButton" Text="−" FontSize="18" BackgroundColor="Transparent" TextColor="#64748B" Padding="8,0" CornerRadius="0" BorderWidth="0"/>
+                        <Button x:Name="IncreaseQuantityButton" Text="+" FontSize="18" BackgroundColor="Transparent" TextColor="#64748B" Padding="8,0" CornerRadius="0" BorderWidth="0"/>
+                    </HorizontalStackLayout>
+                </Grid>
+            </Border>
+            
+            <Border Grid.Column="2" Style="{StaticResource InputBorderStyle}">
+                <Grid ColumnDefinitions="Auto, *">
+                    <Image Grid.Column="0" Source="price_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
+                    <Entry x:Name="PriceEntry" Grid.Column="1" Placeholder="Price" Keyboard="Numeric" Style="{StaticResource InputStyle}"/>
+                </Grid>
+            </Border>
+        </Grid>
+        
+        <Grid Grid.Row="3" ColumnDefinitions="3*, 2*, 1*" ColumnSpacing="16">
+            <Border Grid.Column="0" Style="{StaticResource InputBorderStyle}">
+                <Grid ColumnDefinitions="Auto, *">
+                    <Image Grid.Column="0" Source="description_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Start" Margin="0,12,8,0"/>
+                    <Editor x:Name="DescriptionEditor" Grid.Column="1" Placeholder="Description" AutoSize="TextChanges" MaxLength="500" Style="{StaticResource InputStyle}"/>
+                </Grid>
+            </Border>
+            
+            <Border Grid.Column="1" Style="{StaticResource InputBorderStyle}">
+                <Grid ColumnDefinitions="Auto, *">
+                    <Image Grid.Column="0" Source="calendar_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
+                    <DatePicker x:Name="ExpiryDatePicker" Grid.Column="1" Format="d" Style="{StaticResource InputStyle}"/>
+                </Grid>
+            </Border>
+            
+            <Button  Clicked="OnAddProductClicked" x:Name="AddProductButton" Grid.Column="2" Text="Add Product" Style="{StaticResource PrimaryButton}">
+                <Button.ImageSource>
+                    <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe145;" Color="White" Size="16"/>
+                </Button.ImageSource>
+            </Button>
+        </Grid>
+    </Grid>
+</Border>
             
             <Border Grid.Row="2" Style="{StaticResource InputBorderStyle}">
                 <Grid ColumnDefinitions="Auto, *, Auto">
                     <Image Grid.Column="0" Source="search_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
-                    <Entry Grid.Column="1" Placeholder="Search products by name, category, or barcode" Style="{StaticResource InputStyle}"/>
-                    <Button Grid.Column="2" Text="Filter" Style="{StaticResource SecondaryButton}" Padding="12,8">
-                        <Button.ImageSource>
-                            <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe152;" Color="#3B82F6" Size="16"/>
-                        </Button.ImageSource>
-                    </Button>
+                    <Entry Grid.Column="1" x:Name="SearchEntry" TextChanged="OnSearchTextChanged" Placeholder="Search products by name, category, or barcode" Style="{StaticResource InputStyle}"/>
                 </Grid>
             </Border>
             
@@ -224,7 +232,6 @@
                     <Grid RowDefinitions="Auto, 1*" RowSpacing="16">
                         <Grid Grid.Row="0" ColumnDefinitions="1*, Auto">
                             <Label Grid.Column="0" Text="Latest Products" Style="{StaticResource SubtitleStyle}"/>
-                            <Button Grid.Column="1" Text="View All" BackgroundColor="Transparent" TextColor="#3B82F6" FontAttributes="Bold" Padding="0"/>
                         </Grid>
                         
                         <CollectionView Grid.Row="1" EmptyView="No products available" x:Name="LatestProductListView">
@@ -261,7 +268,6 @@
                     <Grid RowDefinitions="Auto, 1*" RowSpacing="16">
                         <Grid Grid.Row="0" ColumnDefinitions="1*, Auto">
                             <Label Grid.Column="0" Text="Low Stock Products" Style="{StaticResource SubtitleStyle}"/>
-                            <Button Grid.Column="1" Text="Restock All" Style="{StaticResource SecondaryButton}" Padding="12,6"/>
                         </Grid>
                         
                         <CollectionView Grid.Row="1" EmptyView="No low stock products" x:Name="LowStockProductView">
@@ -284,7 +290,6 @@
                                             
                                             <HorizontalStackLayout Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" Spacing="8">
                                                 <Label Text="{Binding Quantity, StringFormat='Qty: {0}'}" TextColor="#EF4444" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
-                                                <Button Text="Restock" BackgroundColor="#FEF2F2" TextColor="#EF4444" FontAttributes="Bold" CornerRadius="6" Padding="8,4" FontSize="12"/>
                                             </HorizontalStackLayout>
                                         </Grid>
                                     </Border>

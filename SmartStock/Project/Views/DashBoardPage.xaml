@@ -99,14 +99,7 @@
                 <Label Text="Smart Stock" FontSize="24" FontAttributes="Bold" TextColor="#3B82F6" HorizontalOptions="Start"/>
                 <Label Text="Inventory Management" FontSize="12" TextColor="#64748B" HorizontalOptions="Start"/>
             </VerticalStackLayout>
-            
-            <Border Grid.Row="1" Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="12,0" Margin="0,0,0,16">
-                <Grid ColumnDefinitions="Auto, *">
-                    <Image Grid.Column="0" Source="search_icon.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" Margin="0,0,8,0"/>
-                    <Entry Grid.Column="1" Placeholder="Search..." Style="{StaticResource SearchEntryStyle}" VerticalOptions="Center"/>
-                </Grid>
-            </Border>
-            
+
             <VerticalStackLayout Grid.Row="2" Spacing="4">
                 <Label Text="MENU" FontSize="12" TextColor="#94A3B8" Margin="12,16,0,8"/>
                 
@@ -121,15 +114,9 @@
                         <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe8f6;" Color="#64748B" Size="18"/>
                     </Button.ImageSource>
                 </Button>
-                
-                <Button Text="Documents" Style="{StaticResource NavButton}">
-                    <Button.ImageSource>
-                        <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe873;" Color="#64748B" Size="18"/>
-                    </Button.ImageSource>
-                </Button>
             </VerticalStackLayout>
             
-            <Button Grid.Row="3" Text="Log Out" Style="{StaticResource NavButton}" x:Name="LogOutbtn" Clicked="LogOutbtn_Clicked">
+            <Button Grid.Row="3" Text="Log Out" Style="{StaticResource NavButton}" Clicked="LogOutbtn_Clicked">
                 <Button.ImageSource>
                     <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe9ba;" Color="#64748B" Size="18"/>
                 </Button.ImageSource>
@@ -143,13 +130,7 @@
                         <Label Text="Welcome back!" Style="{StaticResource BodyTextStyle}" TextColor="#64748B"/>
                     </VerticalStackLayout>
                     
-                    <HorizontalStackLayout Grid.Column="1" Spacing="16" VerticalOptions="Center">
-                        <Button Text="Storage Alerts" Style="{StaticResource AlertButton}">
-                            <Button.ImageSource>
-                                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe002;" Color="White" Size="16"/>
-                            </Button.ImageSource>
-                        </Button>
-                        
+                    <HorizontalStackLayout Grid.Column="1" Spacing="16" VerticalOptions="Center">                        
                         <Grid ColumnDefinitions="Auto, Auto" ColumnSpacing="12">
                             <Border Grid.Column="0" StrokeShape="RoundRectangle 20" WidthRequest="40" HeightRequest="40" BackgroundColor="#EFF6FF" Padding="0">
                                 <Label Text="A" TextColor="#3B82F6" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -199,7 +180,7 @@
                     <Grid RowDefinitions="Auto, 1*" RowSpacing="16">
                         <Grid Grid.Row="0" ColumnDefinitions="1*, Auto">
                             <Label Grid.Column="0" Text="Stock Information" Style="{StaticResource SubtitleStyle}"/>
-                            <Button Grid.Column="1" Text="View All" BackgroundColor="Transparent" TextColor="#3B82F6" FontAttributes="Bold" Padding="0"/>
+                            <Button  Clicked="ViewAll_Clicked" Grid.Column="1" Text="View All" BackgroundColor="Transparent" TextColor="#3B82F6" FontAttributes="Bold" Padding="0"/>
                         </Grid>
                         
                         <CollectionView Grid.Row="1" x:Name="ProductListView" EmptyView="No products available">
@@ -236,7 +217,7 @@
                     <Grid RowDefinitions="Auto, 1*" RowSpacing="16">
                         <Grid Grid.Row="0" ColumnDefinitions="1*, Auto">
                             <Label Grid.Column="0" Text="Newly Added Products" Style="{StaticResource SubtitleStyle}"/>
-                            <Button Grid.Column="1" Text="Add New" Style="{StaticResource PrimaryButton}" Padding="12,8"/>
+                            <Button Grid.Column="1" Clicked="AddNew_Clicked" Text="Add New" Style="{StaticResource PrimaryButton}" Padding="12,8"/>
                         </Grid>
                         
                         <CollectionView Grid.Row="1" x:Name="NewlyAddedList" EmptyView="No new products added">
@@ -258,8 +239,6 @@
                                                 <Label Text="{Binding Quantity, StringFormat='Added Qty: {0}'}" TextColor="#64748B" FontSize="14"/>
                                                 <Label Text="{Binding Barcode, StringFormat='Barcode: {0}'}" TextColor="#64748B" FontSize="14"/>
                                             </VerticalStackLayout>
-                                            
-                                            <Button Grid.Column="2" Text="Details" BackgroundColor="#F1F5F9" TextColor="#3B82F6" FontAttributes="Bold" CornerRadius="8" Padding="12,8" VerticalOptions="Center"/>
                                         </Grid>
                                     </Border>
                                 </DataTemplate>
