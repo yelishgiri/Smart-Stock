@@ -182,8 +182,8 @@
                 <Grid ColumnDefinitions="*, Auto">
                     <Entry x:Name="QuantityEntry" Grid.Column="0" Text="4" Style="{StaticResource InputStyle}" HorizontalTextAlignment="Center"/>
                     <HorizontalStackLayout Grid.Column="1" Spacing="0">
-                        <Button x:Name="DecreaseQuantityButton" Text="−" FontSize="18" BackgroundColor="Transparent" TextColor="#64748B" Padding="8,0" CornerRadius="0" BorderWidth="0"/>
-                        <Button x:Name="IncreaseQuantityButton" Text="+" FontSize="18" BackgroundColor="Transparent" TextColor="#64748B" Padding="8,0" CornerRadius="0" BorderWidth="0"/>
+                        <Button x:Name="DecreaseQuantityButton" Text="−" FontSize="18" BackgroundColor="Transparent" TextColor="#64748B" Padding="8,0" CornerRadius="0" BorderWidth="0" Clicked="OnDecreaseQuantityClicked"/>
+                        <Button x:Name="IncreaseQuantityButton" Text="+" FontSize="18" BackgroundColor="Transparent" TextColor="#64748B" Padding="8,0" CornerRadius="0" BorderWidth="0" Clicked="OnIncreaseQuantityClicked"/>
                     </HorizontalStackLayout>
                 </Grid>
             </Border>
