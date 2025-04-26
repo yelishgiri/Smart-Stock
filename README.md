@@ -190,6 +190,6 @@ SmartStock is a cross-platform inventory management application built with .NET 
 ## Authors
 - Rabindra Giri 
 - Saleep Shrestha
-- Saqib Mahmood (Saqib)
+- Saqib Mahmood (Saqib194)
 - Himanshu Shah
 - Arinze Chiekwu
