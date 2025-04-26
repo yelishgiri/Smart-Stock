@@ -111,7 +111,6 @@ SmartStock is a cross-platform inventory management application built with .NET 
 | `Product.cs`     | Defines product schema                 |
 | `Users.cs`       | Stores user credentials and info       |
 | `AppShell.xaml`  | Main navigation structure              |
-| `DbHelper.cs`    | Database operations handler            |
 
 ## Design Notes
 
