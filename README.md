@@ -1,7 +1,5 @@
 # Smart Stock
-### Contributors
 
-- Saqib Mahmood
 
 ## Project Background
 Smart Stock is a user-friendly, real-time inventory management application designed for small businesses, especially those in regions where inventory is still tracked manually using outdated methods like paper logs or spreadsheets. These traditional methods are inefficient, prone to human error, and lack real-time data accessibility.
@@ -179,19 +177,19 @@ SmartStock is a cross-platform inventory management application built with .NET 
 **Scenario 1: Low Stock Alert**
 
 1. Set product quantity to 8 (threshold = 10)
-2. Navigate to Products Page
-3. Verify item appears in red in Low Stock section
+2. Navigate to the Products Page
+3. Verify the item appears in red in the Low Stock section
 
 **Scenario 2: Duplicate User Registration**
 
 1. Register with username: testuser
-2. Attempt to register again
-3. Expected: Show "Username already exists"
+2. User Attempt to register again
+3. Expected: Show "Username already exists, Please change your username"
 
 
 ## Authors
 - Rabindra Giri 
 - Saleep Shrestha
-- Saqib Mahmood
+- Saqib Mahmood (Saqib)
 - Himanshu Shah
 - Arinze Chiekwu
