@@ -104,44 +104,51 @@ SmartStock is a cross-platform inventory management application built with .NET 
 - `DashboardPage.xaml`: Layout
 - `DashboardPage.xaml.cs`: Data aggregation
 
-## File Breakdown
+# SmartStock File Breakdown
 
-| File             | Purpose                               |
-|------------------|----------------------------------------|
-| `Product.cs`     | Defines product schema                 |
-| `Users.cs`       | Stores user credentials and info       |
-| `AppShell.xaml`  | Main navigation structure              |
+## Project Root Files
+| File |
+|-------------------------------|
+| `App.xaml` |
+| `App.xaml.cs` |
+| `AppShell.xaml` |
+| `AppShell.xaml.cs` |
+| `MauiProgram.cs` |
 
-## Design Notes
+## Models
+| File | Purpose |
+|------|--------------------------------|
+| `Invoice.cs` | Sales transaction records |
+| `Product.cs` | Inventory item definition |
+| `User.cs` | User account management |
 
-**Security:**
+## Views
+### Authentication Flow
+| File | Purpose |
+|------|-----------------------|
+| `LoginPage.xaml` | User authentication, Input validation, error alerts |
+| `LoginPage.xaml.cs` | Login logic |
+| `RegisterPage.xaml` | New user creation and Password confirmation check |
+| `RegisterPage.xaml.cs` | Registration logic |
+| `ForgotPasswordPage.xaml` | Password recovery and Email input field |
+| `ForgotPasswordPage.xaml.cs` | Recovery navigation and Back to login flow |
 
-- Current: Plaintext password storage
-- Recommended: Implement bcrypt hashing
+### Core Functionality
+| File | Purpose |
+|------|-------------------------|
+| `DashBoardPage.xaml` | Analytics dashboard and Statistics cards layout |
+| `DashBoardPage.xaml.cs` | Data aggregation and `TotalValue` calculation logic |
+| `ProductsPage.xaml` | Inventory management and CRUD operations UI |
+| `ProductsPage.xaml.cs` | Product operations and `OnAddProductClicked` handler |
 
-**Navigation:**
-
-- Uses .NET MAUI Shell URI routing:
-  ```csharp
-  Shell.Current.GoToAsync(nameof(ProductsPage));
-  ```
-
-**Data Binding:**
-
-- `CollectionView` binds to `ObservableCollection<Product>`
+## Controllers
+| File | Purpose |
+|------|----------------------|
+| `LoginController.cs` | Auth operations |
 
 ## Testing Strategy
 
 ### Unit Tests
-
-**Product Class:**
-```csharp
-[Test]
-public void Product_TotalValue_CalculatesCorrectly() {
-  var p = new Product { Price = 10, Quantity = 5 };
-  Assert.AreEqual(50, p.Price * p.Quantity);
-}
-```
 
 **LoginPage Validation:**
 
