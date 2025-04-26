@@ -36,9 +36,10 @@ public partial class ProductsPage : ContentPage
         Shell.Current.GoToAsync(nameof(DashBoardPage));
     }
 
-    private void LogOutbtn_Clicked(object sender, EventArgs e)
+    private async void LogOutbtn_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync(nameof(LoginPage));
+        App.CurrentUser = null;
+        await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
     }
 
     private async Task RefreshProductLists()
