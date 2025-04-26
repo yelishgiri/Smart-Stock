@@ -6,12 +6,10 @@ Smart Stock is a user-friendly, real-time inventory management application desig
 Smart Stock aims to solve these problems by offering:
 - Secure authentication
 - CRUD (Create, Read, Update, Delete) operations
-- Low-stock alerts
-- Barcode scanning
-- Document uploads
+- Barcode Insertion
 - And more
 
-Developed using .NET MAUI, C#, and MSAL.Net, Smart Stock is both technically robust and accessible to non-technical users, empowering small business owners to make better, data-driven decisions while minimizing administrative overhead.
+Developed using .NET MAUI, C# and SQLite Database Smart Stock is both technically robust and accessible to non-technical users, empowering small business owners to make better, data-driven decisions while minimizing administrative overhead.
 
 ## Features and Prototype
 
@@ -25,7 +23,6 @@ The main hub providing:
 - Visual overview of analytics
 - Current stock data
 - Recently added items
-- Low stock notifications
 - Navigation to other features
 
 ### Product Management
@@ -35,20 +32,15 @@ The main hub providing:
 - Track quantity
 - View latest and low stock products
 
-### Document/Invoice Management
-- Upload, search, and view invoice documents
-- Manage payment status
-- Download previous invoices
-
 ## Navigation Flow
 The application follows a logical flow:
-1. Authentication (Register/Login)
+1. Authentication (Register/Login) 
 2. Dashboard as central hub
-3. Access to Products, Documents, and Settings sections
+3. Access to Products, Dashboard
 4. Secure logout from any major screen
 
 ## Authors
-- Rabindra Giri
+- Rabindra Giri 
 - Saleep Shrestha
 - Saqib Mahmood
 - Himanshu Shah
