@@ -1,4 +1,7 @@
 # Smart Stock
+### Contributors
+
+- Saqib Mahmood
 
 ## Project Background
 Smart Stock is a user-friendly, real-time inventory management application designed for small businesses, especially those in regions where inventory is still tracked manually using outdated methods like paper logs or spreadsheets. These traditional methods are inefficient, prone to human error, and lack real-time data accessibility.
