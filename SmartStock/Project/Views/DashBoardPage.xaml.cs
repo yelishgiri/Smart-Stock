@@ -40,9 +40,10 @@ public partial class DashBoardPage : ContentPage
         Shell.Current.GoToAsync(nameof(ProductsPage));
     }
 
-    private void LogOutbtn_Clicked(object sender, EventArgs e)
+    private async void LogOutbtn_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync(nameof(LoginPage));
+        App.CurrentUser = null;
+        await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
     }
 
     private void AddNew_Clicked(object sender, EventArgs e){
